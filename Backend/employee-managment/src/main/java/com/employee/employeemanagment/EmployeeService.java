@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 @SpringBootApplication
 @RestController
 @RequestMapping("/employees")
+@CrossOrigin(origins = "http://localhost:5173")
 public class EmployeeService {
 
   // private static final String FILE_PATH = "employees.json";
