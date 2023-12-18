@@ -49,7 +49,7 @@ const EmployeeList = () => {
       <ul>
         {employees.map(employee => (
           <li key={employee.employeeID}>
-            {`${employee.firstName} ${employee.lastName} - ${employee.designation}`}
+            {`${employee.employeeID} -> ${employee.firstName} ${employee.lastName} - ${employee.designation}`}
           </li>
         ))}
       </ul>
