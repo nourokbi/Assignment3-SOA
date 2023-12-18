@@ -33,6 +33,9 @@ public class EmployeeFileHandler {
     }
   }
 
+  //  ==========================================
+  //  ========== working with the endpoints =========
+  //  ==========================================
 
   public static List<Employee>  getAll () {
     return employeeList;
@@ -54,7 +57,6 @@ public class EmployeeFileHandler {
     employeeList.removeIf(employee -> employee.getEmployeeID().equals(employeeId));
     writeEmployeesToFile(employeeList);
   }
-
   public static List<Employee> searchByLanguage(String languageName , int minScore , String sortOrder){
 
     List<Employee> result = employeeList.stream()
@@ -77,15 +79,12 @@ public class EmployeeFileHandler {
 
     return result;
   }
-
-
-
   public static List<Employee>  Search(Integer employeeId, String designation){
-     employeeList.stream().filter(employee -> (employeeId == null || employee.getEmployeeID().equals(employeeId))
+     return employeeList.stream().filter(employee -> (employeeId == null || employee.getEmployeeID().equals(employeeId))
                     && (designation == null || employee.getDesignation().equalsIgnoreCase(designation)))
             .collect(Collectors.toList());
 
-     return employeeList;
+
   }
 
 

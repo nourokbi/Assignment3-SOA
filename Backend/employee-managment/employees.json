@@ -23,47 +23,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "employeeID": 1001,
-    "designation": "Team Lead",
-    "knownLanguages": [
-      {
-        "scoreOutof100": 80,
-        "languageName": "Java"
-      },
-      {
-        "scoreOutof100": 75,
-        "languageName": "JavaScript"
-      },
-      {
-        "scoreOutof100": 85,
-        "languageName": "Python"
-      }
-    ]
-  },
-  {
-    "firstName": "John",
-    "lastName": "Doe",
-    "employeeID": 1001,
-    "designation": "Team Lead",
-    "knownLanguages": [
-      {
-        "scoreOutof100": 80,
-        "languageName": "Java"
-      },
-      {
-        "scoreOutof100": 75,
-        "languageName": "JavaScript"
-      },
-      {
-        "scoreOutof100": 85,
-        "languageName": "Python"
-      }
-    ]
-  },
-  {
-    "firstName": "John",
-    "lastName": "Doe",
-    "employeeID": 1001,
-    "designation": "Team Lead",
+    "designation": "team leader",
     "knownLanguages": [
       {
         "scoreOutof100": 80,

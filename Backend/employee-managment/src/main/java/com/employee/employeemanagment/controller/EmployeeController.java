@@ -23,7 +23,7 @@ public class EmployeeController {
     SpringApplication.run(EmployeeController.class, args);
   }
 
-  @GetMapping("/")
+  @GetMapping("")
   public List<Employee> getAllEmployees() {
     return EmployeeFileHandler.getAll();
   }
@@ -49,6 +49,7 @@ public class EmployeeController {
   @GetMapping("/search")
   public List<Employee> searchEmployee(@RequestParam(required = false) Integer employeeId,
       @RequestParam(required = false) String designation) {
+    System.out.println(employeeId );
     return EmployeeFileHandler.Search(employeeId , designation);
 
   }
