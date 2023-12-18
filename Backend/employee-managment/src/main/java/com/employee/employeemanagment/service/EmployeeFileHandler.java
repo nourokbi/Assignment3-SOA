@@ -87,6 +87,14 @@ public class EmployeeFileHandler {
 
   }
 
+  public static Employee getEmployeeById(Integer employeeId) {
+    return employeeList.stream()
+            .filter(employee -> employee.getEmployeeID().equals(employeeId))
+            .findFirst()
+            .orElse(null); // Return null if employee with the specified ID is not found
+  }
+
+
 
 
 //  ==========================================

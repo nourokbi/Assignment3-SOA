@@ -1,22 +1,25 @@
 package com.employee.employeemanagment.controller;
-
 import com.employee.employeemanagment.service.EmployeeFileHandler;
 import com.employee.employeemanagment.models.Employee;
-import com.employee.employeemanagment.models.Language;
 import org.json.JSONException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+
 
 @SpringBootApplication
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/employees")
-@CrossOrigin(origins = "http://localhost:5173")
 public class EmployeeController {
 
   public static void main(String[] args) {
@@ -25,12 +28,23 @@ public class EmployeeController {
 
   @GetMapping("")
   public List<Employee> getAllEmployees() {
+    System.out.println("getting all employees");
     return EmployeeFileHandler.getAll();
   }
 
   @PostMapping("/add")
-  public void addEmployee(@RequestBody Employee employee) throws JSONException, IOException {
-   EmployeeFileHandler.Add(employee);
+  public String addEmployee(@RequestBody Employee employee) throws JSONException, IOException {
+    Employee existedEmployee = EmployeeFileHandler.getEmployeeById(employee.getEmployeeID());
+
+    if (existedEmployee != null) {
+      System.out.println("there is an employee with the same id");
+      return "there is an employee with the same id";
+    }
+    else {
+        EmployeeFileHandler.Add(employee);
+      System.out.println("employee added successfully");
+        return "employee added successfully";
+    }
 
   }
 
