@@ -1,73 +1,8 @@
-package com.employee.employeemanagment;
+package com.employee.employeemanagment.service;
 
-// import com.fasterxml.jackson.databind.ObjectMapper;
-// import com.fasterxml.jackson.databind.SerializationFeature;
-// import java.io.File;
-// import java.io.IOException;
-// import java.util.ArrayList;
-// import java.util.List;
 
-// public class EmployeeFileHandler {
-
-//   private static final String FILE_PATH = "employees.json";
-
-//   public static void main(String[] args) {
-//     // Example usage
-//     List<Employee> employeeList = readEmployeesFromFile();
-//     System.out.println("Original Employee List:");
-//     employeeList.forEach(System.out::println);
-
-//     // Modify the employeeList as needed (e.g., add, update, delete)
-
-//     writeEmployeesToFile(employeeList);
-//     System.out.println("Employee List Updated and Written to File:");
-//     readEmployeesFromFile().forEach(System.out::println);
-//   }
-
-//   static {
-//     initializeFile();
-//   }
-
-//   private static void initializeFile() {
-//     File file = new File(FILE_PATH);
-//     if (!file.exists()) {
-//       List<Employee> initialData = createInitialData();
-//       writeEmployeesToFile(initialData);
-//     }
-//   }
-
-//   private static List<Employee> createInitialData() {
-//     List<Employee> initialData = new ArrayList<>();
-//     // Add your initial employee data here if needed
-//     return initialData;
-//   }
-
-//   public static List<Employee> readEmployeesFromFile() {
-//     List<Employee> employeeList = new ArrayList<>();
-//     ObjectMapper objectMapper = new ObjectMapper();
-
-//     try {
-//       employeeList = objectMapper.readValue(new File(FILE_PATH),
-//           objectMapper.getTypeFactory().constructCollectionType(List.class, Employee.class));
-//     } catch (IOException e) {
-//       e.printStackTrace();
-//     }
-
-//     return employeeList;
-//   }
-
-//   public static void writeEmployeesToFile(List<Employee> employeeList) {
-//     ObjectMapper objectMapper = new ObjectMapper();
-//     objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-
-//     try {
-//       objectMapper.writeValue(new File(FILE_PATH), employeeList);
-//     } catch (IOException e) {
-//       e.printStackTrace();
-//     }
-//   }
-// }
-
+import com.employee.employeemanagment.models.Employee;
+import com.employee.employeemanagment.models.Language;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,11 +12,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EmployeeFileHandler {
 
   private static final String FILE_PATH = "employees.json";
+  private static final List<Employee> employeeList = EmployeeFileHandler.readEmployeesFromFile();
 
   static {
     try {
@@ -94,6 +32,67 @@ public class EmployeeFileHandler {
       e.printStackTrace();
     }
   }
+
+
+  public static List<Employee>  getAll () {
+    return employeeList;
+  }
+  public static void Add(Employee employee) throws IOException {
+    employeeList.add(employee);
+    System.out.println(employee);
+    writeEmployeesToFile(employeeList);
+  }
+  public static void Update(Integer employeeId , String newDesignation) throws IOException {
+    employeeList.forEach(employee -> {
+      if (employee.getEmployeeID().equals(employeeId)) {
+        employee.setDesignation(newDesignation);
+      }
+    });
+    EmployeeFileHandler.writeEmployeesToFile(employeeList);
+  }
+  public static void Delete(Integer employeeId) throws IOException {
+    employeeList.removeIf(employee -> employee.getEmployeeID().equals(employeeId));
+    writeEmployeesToFile(employeeList);
+  }
+
+  public static List<Employee> searchByLanguage(String languageName , int minScore , String sortOrder){
+
+    List<Employee> result = employeeList.stream()
+            .filter(employee -> employee.getKnownLanguages().stream()
+                    .anyMatch(lang -> lang.getLanguageName().equalsIgnoreCase(languageName)
+                            && lang.getScoreOutof100() >= minScore))
+            .collect(Collectors.toList());
+
+    Comparator<Employee> scoreComparator = Comparator.comparingInt(emp -> emp.getKnownLanguages().stream()
+            .filter(lang -> lang.getLanguageName().equalsIgnoreCase(languageName))
+            .findFirst()
+            .map(Language::getScoreOutof100)
+            .orElse(0));
+
+    if ("desc".equalsIgnoreCase(sortOrder)) {
+      result.sort(scoreComparator.reversed().thenComparing(Comparator.comparing(Employee::getFirstName)));
+    } else {
+      result.sort(scoreComparator.thenComparing(Comparator.comparing(Employee::getFirstName)));
+    }
+
+    return result;
+  }
+
+
+
+  public static List<Employee>  Search(Integer employeeId, String designation){
+     employeeList.stream().filter(employee -> (employeeId == null || employee.getEmployeeID().equals(employeeId))
+                    && (designation == null || employee.getDesignation().equalsIgnoreCase(designation)))
+            .collect(Collectors.toList());
+
+     return employeeList;
+  }
+
+
+
+//  ==========================================
+//  ========== working with the file =========
+//  ==========================================
 
   private static void initializeFile() throws JSONException, IOException {
     File file = new File(FILE_PATH);
@@ -109,7 +108,7 @@ public class EmployeeFileHandler {
     return initialData;
   }
 
-  public static List<Employee> readEmployeesFromFile() {
+  private static List<Employee> readEmployeesFromFile() {
     List<Employee> employeeList = new ArrayList<>();
 
     try {
@@ -124,11 +123,10 @@ public class EmployeeFileHandler {
     } catch (IOException e) {
       e.printStackTrace();
     }
-
     return employeeList;
   }
 
-  public static void writeEmployeesToFile(List<Employee> employeeList) throws JSONException, IOException {
+  private static void writeEmployeesToFile(List<Employee> employeeList) throws JSONException, IOException {
     JSONArray jsonArray = new JSONArray();
 
     for (Employee employee : employeeList) {
@@ -176,4 +174,6 @@ public class EmployeeFileHandler {
 
     return jsonEmployee;
   }
+
+
 }

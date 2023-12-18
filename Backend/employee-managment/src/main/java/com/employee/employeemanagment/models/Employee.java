@@ -1,4 +1,5 @@
-package com.employee.employeemanagment;
+package com.employee.employeemanagment.models;
+
 import java.util.List;
 
 public class Employee {

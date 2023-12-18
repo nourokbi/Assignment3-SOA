@@ -1,11 +1,11 @@
-package com.employee.employeemanagment;
+package com.employee.employeemanagment.models;
 
 public class Language {
 
     private String languageName;
     private int scoreOutof100;
 
-    // Constructors, getters, and setters
+
 
     public Language() {
     }
