@@ -12,6 +12,7 @@ import EmployeeDetailsPage, {
 } from "./pages/EmployeeDetailsPage";
 import StudentsLayoutPage from "./pages/StudentsLayoutPage";
 import ErrorPage from "./pages/ErrorPage";
+import SearchByLanguage from "./pages/SearchByLanguage";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
 
     children: [
       { path: "search", element: <SearchPage /> },
+      { path: "language", element: <SearchByLanguage /> },
 
       {
         path: "employees",

@@ -5,6 +5,7 @@ const links = [
   // { title: "Home", to: "" },
   { title: "Employees", to: "employees" },
   { title: "Search", to: "search" },
+  { title: "SearchByLanguage", to: "language" },
   { title: "New Employee", to: "employees/new" },
 ];
 
