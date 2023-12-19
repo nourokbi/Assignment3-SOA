@@ -1,0 +1,162 @@
+[
+  {
+    "firstName": "Sayed",
+    "lastName": "Ahmed",
+    "employeeID": 1005,
+    "designation": "Back",
+    "knownLanguages": [
+      {
+        "scoreOutof100": 80,
+        "languageName": "Java"
+      },
+      {
+        "scoreOutof100": 75,
+        "languageName": "JavaScript"
+      },
+      {
+        "scoreOutof100": 85,
+        "languageName": "Python"
+      }
+    ]
+  },
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "employeeID": 1001,
+    "designation": "Team Lead",
+    "knownLanguages": [
+      {
+        "scoreOutof100": 80,
+        "languageName": "Java"
+      },
+      {
+        "scoreOutof100": 75,
+        "languageName": "JavaScript"
+      },
+      {
+        "scoreOutof100": 85,
+        "languageName": "Python"
+      }
+    ]
+  },
+  {
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "employeeID": 1002,
+    "designation": "Data Scientist",
+    "knownLanguages": [
+      {
+        "scoreOutof100": 90,
+        "languageName": "Python"
+      },
+      {
+        "scoreOutof100": 85,
+        "languageName": "R"
+      },
+      {
+        "scoreOutof100": 80,
+        "languageName": "SQL"
+      }
+    ]
+  },
+  {
+    "firstName": "Bob",
+    "lastName": "Johnson",
+    "employeeID": 1003,
+    "designation": "UI/UX Designer",
+    "knownLanguages": [
+      {
+        "scoreOutof100": 85,
+        "languageName": "HTML"
+      },
+      {
+        "scoreOutof100": 80,
+        "languageName": "CSS"
+      },
+      {
+        "scoreOutof100": 75,
+        "languageName": "JavaScript"
+      }
+    ]
+  },
+  {
+    "firstName": "Nour Elden",
+    "lastName": "Okbi",
+    "employeeID": 1006,
+    "designation": "Front-End",
+    "knownLanguages": [
+      {
+        "scoreOutof100": 80,
+        "languageName": "React"
+      },
+      {
+        "scoreOutof100": 80,
+        "languageName": "JavaScript"
+      },
+      {
+        "scoreOutof100": 85,
+        "languageName": "Python"
+      }
+    ]
+  },
+  {
+    "firstName": "osama",
+    "lastName": "karam",
+    "employeeID": 1009,
+    "designation": "front",
+    "knownLanguages": [
+      {
+        "scoreOutof100": 50,
+        "languageName": "java"
+      },
+      {
+        "scoreOutof100": 60,
+        "languageName": "react"
+      },
+      {
+        "scoreOutof100": 70,
+        "languageName": "html"
+      }
+    ]
+  },
+  {
+    "firstName": "hassan",
+    "lastName": "karam",
+    "employeeID": 1010,
+    "designation": "front",
+    "knownLanguages": [
+      {
+        "scoreOutof100": 105,
+        "languageName": "java"
+      },
+      {
+        "scoreOutof100": 60,
+        "languageName": "react"
+      },
+      {
+        "scoreOutof100": 70,
+        "languageName": "html"
+      }
+    ]
+  },
+  {
+    "firstName": "Nour Eldeen",
+    "lastName": "okbi",
+    "employeeID": 1012,
+    "designation": "frontend",
+    "knownLanguages": [
+      {
+        "scoreOutof100": 100,
+        "languageName": "react"
+      },
+      {
+        "scoreOutof100": 80,
+        "languageName": "javascript"
+      },
+      {
+        "scoreOutof100": 70,
+        "languageName": "python"
+      }
+    ]
+  }
+]
