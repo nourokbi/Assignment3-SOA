@@ -76,6 +76,8 @@ public class EmployeeController {
       @RequestParam int minScore,
       @RequestParam(required = false, defaultValue = "asc") String sortOrder) {
 
+    System.out.println(sortOrder);
+
     return EmployeeFileHandler.searchByLanguage(languageName , minScore , sortOrder);
 
   }

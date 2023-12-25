@@ -6,13 +6,14 @@ const SearchByLanguage = () => {
   const [employees, setEmployees] = useState();
   const languageName = useRef("");
   const languageScore = useRef("");
+  const sortProperty = useRef("");
 
   const fetchData = async (event) => {
     event.preventDefault();
 
     const name = languageName.current.value;
     const score = languageScore.current.value;
-    const order = "ASC";
+    const order = sortProperty.current.value;
 
     try {
       const response = await fetch(
@@ -55,6 +56,14 @@ const SearchByLanguage = () => {
           aria-label="Add minScore..."
           ref={languageScore}
         />
+        <select
+          name="sortProperty"
+          aria-label="Select sort property"
+          ref={sortProperty}
+        >
+          <option value="asc">Ascending</option>
+          <option value="dec">Descending</option>
+        </select>
         <button>Search</button>
       </form>
 
