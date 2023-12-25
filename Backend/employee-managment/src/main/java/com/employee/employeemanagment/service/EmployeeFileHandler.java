@@ -1,6 +1,5 @@
 package com.employee.employeemanagment.service;
 
-
 import com.employee.employeemanagment.models.Employee;
 import com.employee.employeemanagment.models.Language;
 import org.json.JSONArray;
@@ -33,19 +32,21 @@ public class EmployeeFileHandler {
     }
   }
 
-  //  ==========================================
-  //  ========== working with the endpoints =========
-  //  ==========================================
+  // ==========================================
+  // ========== working with the endpoints =========
+  // ==========================================
 
-  public static List<Employee>  getAll () {
+  public static List<Employee> getAll() {
     return employeeList;
   }
+
   public static void Add(Employee employee) throws IOException {
     employeeList.add(employee);
     System.out.println(employee);
     writeEmployeesToFile(employeeList);
   }
-  public static void Update(Integer employeeId , String newDesignation) throws IOException {
+
+  public static void Update(Integer employeeId, String newDesignation) throws IOException {
     employeeList.forEach(employee -> {
       if (employee.getEmployeeID().equals(employeeId)) {
         employee.setDesignation(newDesignation);
@@ -53,23 +54,25 @@ public class EmployeeFileHandler {
     });
     EmployeeFileHandler.writeEmployeesToFile(employeeList);
   }
+
   public static void Delete(Integer employeeId) throws IOException {
     employeeList.removeIf(employee -> employee.getEmployeeID().equals(employeeId));
     writeEmployeesToFile(employeeList);
   }
-  public static List<Employee> searchByLanguage(String languageName , int minScore , String sortOrder){
+
+  public static List<Employee> searchByLanguage(String languageName, int minScore, String sortOrder) {
 
     List<Employee> result = employeeList.stream()
-            .filter(employee -> employee.getKnownLanguages().stream()
-                    .anyMatch(lang -> lang.getLanguageName().equalsIgnoreCase(languageName)
-                            && lang.getScoreOutof100() >= minScore))
-            .collect(Collectors.toList());
+        .filter(employee -> employee.getKnownLanguages().stream()
+            .anyMatch(lang -> lang.getLanguageName().equalsIgnoreCase(languageName)
+                && lang.getScoreOutof100() >= minScore))
+        .collect(Collectors.toList());
 
     Comparator<Employee> scoreComparator = Comparator.comparingInt(emp -> emp.getKnownLanguages().stream()
-            .filter(lang -> lang.getLanguageName().equalsIgnoreCase(languageName))
-            .findFirst()
-            .map(Language::getScoreOutof100)
-            .orElse(0));
+        .filter(lang -> lang.getLanguageName().equalsIgnoreCase(languageName))
+        .findFirst()
+        .map(Language::getScoreOutof100)
+        .orElse(0));
 
     if ("desc".equalsIgnoreCase(sortOrder)) {
       result.sort(scoreComparator.reversed().thenComparing(Comparator.comparing(Employee::getFirstName)));
@@ -79,27 +82,24 @@ public class EmployeeFileHandler {
 
     return result;
   }
-  public static List<Employee>  Search(Integer employeeId, String designation){
-     return employeeList.stream().filter(employee -> (employeeId == null || employee.getEmployeeID().equals(employeeId))
-                    && (designation == null || employee.getDesignation().equalsIgnoreCase(designation)))
-            .collect(Collectors.toList());
 
+  public static List<Employee> Search(Integer employeeId, String designation) {
+    return employeeList.stream().filter(employee -> (employeeId == null || employee.getEmployeeID().equals(employeeId))
+        && (designation == null || employee.getDesignation().equalsIgnoreCase(designation)))
+        .collect(Collectors.toList());
 
   }
 
   public static Employee getEmployeeById(Integer employeeId) {
     return employeeList.stream()
-            .filter(employee -> employee.getEmployeeID().equals(employeeId))
-            .findFirst()
-            .orElse(null); // Return null if employee with the specified ID is not found
+        .filter(employee -> employee.getEmployeeID().equals(employeeId))
+        .findFirst()
+        .orElse(null); // Return null if employee with the specified ID is not found
   }
 
-
-
-
-//  ==========================================
-//  ========== working with the file =========
-//  ==========================================
+  // ==========================================
+  // ========== working with the file =========
+  // ==========================================
 
   private static void initializeFile() throws JSONException, IOException {
     File file = new File(FILE_PATH);
@@ -181,6 +181,5 @@ public class EmployeeFileHandler {
 
     return jsonEmployee;
   }
-
 
 }

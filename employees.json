@@ -80,82 +80,22 @@
     ]
   },
   {
-    "firstName": "Nour Elden",
-    "lastName": "Okbi",
-    "employeeID": 1006,
-    "designation": "Front-End",
+    "firstName": "Ahmed",
+    "lastName": "Gamal",
+    "employeeID": 2000,
+    "designation": "Frontend",
     "knownLanguages": [
       {
-        "scoreOutof100": 80,
+        "scoreOutof100": 70,
         "languageName": "React"
       },
       {
-        "scoreOutof100": 80,
-        "languageName": "JavaScript"
+        "scoreOutof100": 60,
+        "languageName": "Java"
       },
       {
-        "scoreOutof100": 85,
+        "scoreOutof100": 30,
         "languageName": "Python"
-      }
-    ]
-  },
-  {
-    "firstName": "osama",
-    "lastName": "karam",
-    "employeeID": 1009,
-    "designation": "front",
-    "knownLanguages": [
-      {
-        "scoreOutof100": 50,
-        "languageName": "java"
-      },
-      {
-        "scoreOutof100": 60,
-        "languageName": "react"
-      },
-      {
-        "scoreOutof100": 70,
-        "languageName": "html"
-      }
-    ]
-  },
-  {
-    "firstName": "hassan",
-    "lastName": "karam",
-    "employeeID": 1010,
-    "designation": "front",
-    "knownLanguages": [
-      {
-        "scoreOutof100": 105,
-        "languageName": "java"
-      },
-      {
-        "scoreOutof100": 60,
-        "languageName": "react"
-      },
-      {
-        "scoreOutof100": 70,
-        "languageName": "html"
-      }
-    ]
-  },
-  {
-    "firstName": "Nour Eldeen",
-    "lastName": "okbi",
-    "employeeID": 1012,
-    "designation": "frontend",
-    "knownLanguages": [
-      {
-        "scoreOutof100": 100,
-        "languageName": "react"
-      },
-      {
-        "scoreOutof100": 80,
-        "languageName": "javascript"
-      },
-      {
-        "scoreOutof100": 70,
-        "languageName": "python"
       }
     ]
   }

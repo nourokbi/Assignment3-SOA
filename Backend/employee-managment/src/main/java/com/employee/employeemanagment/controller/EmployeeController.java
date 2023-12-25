@@ -1,4 +1,5 @@
 package com.employee.employeemanagment.controller;
+
 import com.employee.employeemanagment.service.EmployeeFileHandler;
 import com.employee.employeemanagment.models.Employee;
 import org.json.JSONException;
@@ -8,13 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-
 
 @SpringBootApplication
 @RestController
@@ -28,7 +26,7 @@ public class EmployeeController {
 
   @GetMapping("")
   public List<Employee> getAllEmployees() {
-    System.out.println("getting all employees");
+    // System.out.println("getting all employees");
     return EmployeeFileHandler.getAll();
   }
 
@@ -37,21 +35,20 @@ public class EmployeeController {
     Employee existedEmployee = EmployeeFileHandler.getEmployeeById(employee.getEmployeeID());
 
     if (existedEmployee != null) {
-      System.out.println("there is an employee with the same id");
+      // System.out.println("there is an employee with the same id");
       return "there is an employee with the same id";
-    }
-    else {
-        EmployeeFileHandler.Add(employee);
-      System.out.println("employee added successfully");
-        return "employee added successfully";
+    } else {
+      EmployeeFileHandler.Add(employee);
+      // System.out.println("employee added successfully");
+      return "employee added successfully";
     }
 
   }
 
   @PutMapping("/update/{employeeId}")
   public void updateEmployee(@PathVariable Integer employeeId, @RequestParam String newDesignation)
-          throws JSONException, IOException {
-    EmployeeFileHandler.Update(employeeId , newDesignation);
+      throws JSONException, IOException {
+    EmployeeFileHandler.Update(employeeId, newDesignation);
 
   }
 
@@ -63,12 +60,10 @@ public class EmployeeController {
   @GetMapping("/search")
   public List<Employee> searchEmployee(@RequestParam(required = false) Integer employeeId,
       @RequestParam(required = false) String designation) {
-    System.out.println(employeeId );
-    return EmployeeFileHandler.Search(employeeId , designation);
+    System.out.println(employeeId);
+    return EmployeeFileHandler.Search(employeeId, designation);
 
   }
-
-
 
   @GetMapping("/language")
   public List<Employee> getEmployeesByLanguage(
@@ -76,11 +71,8 @@ public class EmployeeController {
       @RequestParam int minScore,
       @RequestParam(required = false, defaultValue = "asc") String sortOrder) {
 
-    return EmployeeFileHandler.searchByLanguage(languageName , minScore , sortOrder);
+    return EmployeeFileHandler.searchByLanguage(languageName, minScore, sortOrder);
 
   }
-
-
-
 
 }

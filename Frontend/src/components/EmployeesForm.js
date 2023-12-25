@@ -1,6 +1,7 @@
 import { useNavigate, useNavigation, json } from "react-router-dom";
 import { useRef, useState } from "react";
 import classes from "./EmployeesForm.module.css";
+import LanguageForm from "./LanguageForm";
 
 function EmployeesForm({ method, employee }) {
   const navigate = useNavigate();
@@ -72,6 +73,7 @@ function EmployeesForm({ method, employee }) {
   return (
     <form onSubmit={sendDataHandler}>
       <div className={classes.form}>
+        
         <p>
           <label htmlFor="fname">First Name</label>
           <input
@@ -118,34 +120,10 @@ function EmployeesForm({ method, employee }) {
             defaultValue={employee ? employee.gpa : ""}
           />
         </p>
+          <LanguageForm languages={languages} setLanguages={setLanguages} />
+          <LanguageForm languages={languages} setLanguages={setLanguages} />
+          <LanguageForm languages={languages} setLanguages={setLanguages} />
 
-        <div>
-          <h2>Languages</h2>
-          <p>
-            <label htmlFor="languageName">languageName</label>
-            <input
-              id="languageName"
-              name="languageName"
-              type="text"
-              ref={languageRef}
-            />
-          </p>
-
-          <p>
-            <label htmlFor="scoreOutof100">scoreOutof100</label>
-            <input
-              id="scoreOutof100"
-              name="scoreOutof100"
-              type="number"
-              max={100}
-              ref={scoreRef}
-            />
-          </p>
-
-          <button type="button" className={classes.btn} onClick={addLanguage}>
-            Add Language
-          </button>
-        </div>
       </div>
 
       <div className={classes.actions}>

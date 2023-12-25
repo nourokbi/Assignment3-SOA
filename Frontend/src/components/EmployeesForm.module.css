@@ -5,6 +5,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 0.3rem 1.5rem;
 }
+.lang-form {
+  width: 100%;
+  display: flex;
+}
 
 .form label,
 .form input,
@@ -20,7 +24,8 @@
   padding: 0.25rem;
   background-color: var(--color-gray-600);
   color: var(--color-gray-100);
-  /* border: none ; */
+  border-radius: 3px;
+  border: none ;
 }
 
 .actions {
