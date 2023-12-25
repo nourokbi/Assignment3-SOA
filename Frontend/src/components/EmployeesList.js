@@ -10,7 +10,7 @@ function EmployeesList({ employees }) {
           <li key={employee.employeeID} className={classes.item}>
             <Link to={`/employees/${employee.employeeID}`}>
               <div className={classes.content}>
-                <h2>{`${employee.firstName} ${employee.lastName}`}</h2>
+                <h2>{`${employee.firstName} ${employee.lastName}  (${employee.designation})`}</h2>
                 <p className={classes.id}>{`ID: ${employee.employeeID}`}</p>
               </div>
             </Link>

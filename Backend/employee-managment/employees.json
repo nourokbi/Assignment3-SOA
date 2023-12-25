@@ -1,25 +1,5 @@
 [
   {
-    "firstName": "Sayed",
-    "lastName": "Ahmed",
-    "employeeID": 1005,
-    "designation": "Back",
-    "knownLanguages": [
-      {
-        "scoreOutof100": 80,
-        "languageName": "Java"
-      },
-      {
-        "scoreOutof100": 75,
-        "languageName": "JavaScript"
-      },
-      {
-        "scoreOutof100": 85,
-        "languageName": "Python"
-      }
-    ]
-  },
-  {
     "firstName": "John",
     "lastName": "Doe",
     "employeeID": 1001,
@@ -103,7 +83,7 @@
     "firstName": "osama",
     "lastName": "karam",
     "employeeID": 1009,
-    "designation": "front",
+    "designation": "frontend-developer",
     "knownLanguages": [
       {
         "scoreOutof100": 50,
@@ -123,7 +103,7 @@
     "firstName": "hassan",
     "lastName": "karam",
     "employeeID": 1010,
-    "designation": "front",
+    "designation": "frontend-developer",
     "knownLanguages": [
       {
         "scoreOutof100": 105,
@@ -143,7 +123,7 @@
     "firstName": "Nour Eldeen",
     "lastName": "okbi",
     "employeeID": 1012,
-    "designation": "frontend",
+    "designation": "frontend-developer",
     "knownLanguages": [
       {
         "scoreOutof100": 100,
