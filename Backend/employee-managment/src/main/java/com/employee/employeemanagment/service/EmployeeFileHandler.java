@@ -74,7 +74,7 @@ public class EmployeeFileHandler {
         .map(Language::getScoreOutof100)
         .orElse(0));
 
-    if ("desc".equalsIgnoreCase(sortOrder)) {
+    if ("dec".equalsIgnoreCase(sortOrder)) {
       result.sort(scoreComparator.reversed().thenComparing(Comparator.comparing(Employee::getFirstName)));
     } else {
       result.sort(scoreComparator.thenComparing(Comparator.comparing(Employee::getFirstName)));
